@@ -27,7 +27,7 @@ class TitleBar extends StatelessWidget {
           )
         ),
         Container(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: titleDetails.map((details) => _buildDetailRow(details)).toList(),
@@ -44,12 +44,12 @@ class TitleBar extends StatelessWidget {
           Text(
             detail.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w600
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 5),
+            padding: const EdgeInsets.only(top: 5),
             child: Text(detail.value, textAlign: TextAlign.center),
           )
         ],
