@@ -30,20 +30,34 @@ class NewTrainingPlan extends StatelessWidget {
                   ],
                 )
             ),
+            Expanded(
+              child: FutureBuilder<List<Exercise>>(
+                future: getExercises(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+
+                  if (snapshot.hasError) {
+                    return Text("Error occurred: ${snapshot.error}");
+                  }
+
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(snapshot.data![index].name)
+                      );
+                    },
+                  );
+                },
+              )
+            )
+
           ]
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ()  {
-          final Future<List<Exercise>> exercises = getExercises();
-
-          exercises.then((value) => {
-            showDialog(context: context, builder: (context) {
-              return AlertDialog(
-                title: Text("${value.length} Exercises"),
-                content: Text(value.first.name),
-              );
-            })
-          });
         },
         child: const Icon(Icons.check),
       ),
@@ -54,7 +68,6 @@ class NewTrainingPlan extends StatelessWidget {
     final response = await get(Uri.parse('http://localhost:8080/exercise'));
 
     if (response.statusCode == 200) {
-
       Iterable exercises = jsonDecode(response.body);
       return List<Exercise>.from(exercises.map((decodedExercise) => Exercise.fromJson(decodedExercise)));
     }
