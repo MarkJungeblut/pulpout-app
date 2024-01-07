@@ -42,18 +42,20 @@ class NewTrainingPlan extends StatelessWidget {
                     return Text("Error occurred: ${snapshot.error}");
                   }
 
+                  final List<Exercise> exercises = snapshot.data!;
+
                   return ListView.builder(
-                    itemCount: snapshot.data!.length,
+                    padding: EdgeInsets.zero,
+                    itemCount: exercises.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(snapshot.data![index].name)
+                          title: Text(exercises[index].name)
                       );
                     },
                   );
                 },
               )
             )
-
           ]
       ),
       floatingActionButton: FloatingActionButton(
