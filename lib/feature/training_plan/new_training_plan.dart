@@ -1,10 +1,14 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:pulpout/model/exercise.dart';
 
 import '../../ui/header_image.dart';
 import '../../ui/title_bar.dart';
 
 class NewTrainingPlan extends StatelessWidget {
+
   const NewTrainingPlan({super.key});
 
   @override
@@ -29,16 +33,33 @@ class NewTrainingPlan extends StatelessWidget {
           ]
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const NewTrainingPlan()));
-          // showDialog(context: context, builder: (context) => const AlertDialog(
-          //   title: Text('Result'),
-          //   content: Text('Foo'),
-          // ));
+        onPressed: ()  {
+          final Future<List<Exercise>> exercises = getExercises();
+
+          exercises.then((value) => {
+            showDialog(context: context, builder: (context) {
+              return AlertDialog(
+                title: Text("${value.length} Exercises"),
+                content: Text(value.first.name),
+              );
+            })
+          });
         },
         child: const Icon(Icons.check),
       ),
     );
+  }
+
+  Future<List<Exercise>> getExercises() async {
+    final response = await get(Uri.parse('http://localhost:8080/exercise'));
+
+    if (response.statusCode == 200) {
+
+      Iterable exercises = jsonDecode(response.body);
+      return List<Exercise>.from(exercises.map((decodedExercise) => Exercise.fromJson(decodedExercise)));
+    }
+
+    throw Exception("Failed to load exercises");
   }
 
 }
