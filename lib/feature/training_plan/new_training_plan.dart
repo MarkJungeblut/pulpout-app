@@ -69,7 +69,49 @@ class NewTrainingPlan extends StatelessWidget {
                             title: Text(exerciseGroups[index].name),
                             children: exercisesOfGroup.map((exercise) {
                               return InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (BuildContext context) {
+                                      return SizedBox(
+                                        height: MediaQuery.of(context).size.height * 2 / 3,
+                                        child: Scaffold(
+                                          appBar: AppBar(
+                                            title: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                    exercise.name,
+                                                    style: const TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500
+                                                    )
+                                                ),
+                                              ],
+                                            ),
+                                            backgroundColor: const Color.fromARGB(
+                                                124, 201, 190, 165),
+                                            centerTitle: false,
+                                            leading: const Icon(Icons.close),
+                                            actions: [
+                                              Container(
+                                                margin: const EdgeInsets.only(right: 5),
+                                                child: Icon(Icons.star_border),
+                                              ),
+                                              Container(
+                                                margin: const EdgeInsets.only(right: 10),
+                                                child: Icon(Icons.more_vert),
+                                              )
+                                            ]
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+
+                                },
                                 child: Container(
                                     height: 60,
                                     margin: const EdgeInsets.only(left: 20, right: 20),

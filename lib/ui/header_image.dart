@@ -12,7 +12,7 @@ class HeaderImage extends StatelessWidget {
     return Container(
       height: 300,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
+        borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
         image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(image),
