@@ -19,7 +19,7 @@ class TrainingPlanOverview extends StatelessWidget {
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const HeaderImage(image: "https://as2.ftcdn.net/v2/jpg/01/74/21/25/1000_F_174212531_cerVf4uP6vinBWieBB46p2P5xVhnsNSK.jpg"),
+            HeaderImage(image: "https://as2.ftcdn.net/v2/jpg/01/74/21/25/1000_F_174212531_cerVf4uP6vinBWieBB46p2P5xVhnsNSK.jpg"),
             Container(
                 margin: const EdgeInsets.only(top: 10, left: 10),
                 child: TitleBar(

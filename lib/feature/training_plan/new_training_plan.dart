@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pulpout/components/exercise_group_list_item.dart';
-import 'package:pulpout/components/new_training_plan_header.dart';
+import 'package:pulpout/ui/exercise_group_list_item.dart';
+import 'package:pulpout/ui/new_training_plan_header.dart';
 import 'package:pulpout/model/exercise.dart';
 import 'package:pulpout/model/exercise_group.dart';
 

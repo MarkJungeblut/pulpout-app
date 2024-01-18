@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pulpout/model/exercise.dart';
+import 'package:pulpout/ui/new_training_plan_header.dart';
+
+import 'exercise_details_header.dart';
 
 class ExerciseDetails extends StatelessWidget {
 
@@ -19,7 +22,7 @@ class ExerciseDetails extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                    exercise.name,
+                    "Details",
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500
@@ -33,7 +36,7 @@ class ExerciseDetails extends StatelessWidget {
             leading: const Icon(Icons.close),
             actions: [
               Container(
-                margin: const EdgeInsets.only(right: 5),
+                margin: const EdgeInsets.only(right: 10),
                 child: const Icon(Icons.star_border),
               ),
               Container(
@@ -42,6 +45,25 @@ class ExerciseDetails extends StatelessWidget {
               )
             ]
         ),
+        body: Column(
+          children: [
+            ExerciseDetailsHeader(title: exercise.name),
+            Expanded(
+
+              child: Container(
+                margin: EdgeInsets.only(left: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text("Bauch anspannen"),
+                    Text("Ellbogen nicht gestreckt"),
+                  ],
+                ),
+              )
+            )
+          ],
+        )
+
       ),
     );
   }
