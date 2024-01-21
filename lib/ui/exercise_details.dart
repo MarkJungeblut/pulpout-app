@@ -49,14 +49,29 @@ class ExerciseDetails extends StatelessWidget {
           children: [
             ExerciseDetailsHeader(title: exercise.name),
             Expanded(
-
               child: Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Text(exercise.description),
+                    Container(margin: EdgeInsets.only(top: 20)),
+                    Text(
+                        "Tipps",
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500
+                        )
+                    ),
                     Text("Bauch anspannen"),
                     Text("Ellbogen nicht gestreckt"),
+                    Text("Schultern zusammenziehen"),
+                    Expanded(child: Container()),
+                    Container(
+                      alignment: Alignment.center,
+                      child: FilledButton(onPressed: () {  }, child: Text("Hinzufügen")),
+                    )
+
                   ],
                 ),
               )
