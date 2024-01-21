@@ -69,7 +69,13 @@ class ExerciseDetails extends StatelessWidget {
                     Expanded(child: Container()),
                     Container(
                       alignment: Alignment.center,
-                      child: FilledButton(onPressed: () {  }, child: Text("Hinzufügen")),
+                      child: FilledButton(
+                        onPressed: () {  }, 
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(124, 201, 190, 165)),
+                          foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
+                        ), 
+                        child: Text("Hinzufügen")),
                     )
 
                   ],
