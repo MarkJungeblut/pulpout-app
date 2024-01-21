@@ -18,3 +18,11 @@ samples, guidance on mobile development, and a full API reference.
 ## Rest API Model parsing:
 
 See: https://github.com/google/json_serializable.dart/tree/master/example
+
+Annotate your code with classes defined in package:json_annotation.
+
+See lib/exercise.dart for an example of a file using these annotations.
+
+See lib/exercise.g.dart for the generated file.
+
+Run ```dart run build_runner build``` to generate files into your source directory.

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pulpout/model/advice.dart';
 
 import 'exercise_group.dart';
 
@@ -18,6 +19,9 @@ class Exercise {
 
   @JsonKey(name: 'ExerciseGroup')
   late ExerciseGroup exerciseGroup;
+
+  @JsonKey(name: 'Advices')
+  late List<Advice> advices;
 
   factory Exercise.fromJson(Map<String, dynamic> json) => _$ExerciseFromJson(json);
 

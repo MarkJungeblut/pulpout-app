@@ -17,13 +17,13 @@ class ExerciseDetails extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 2 / 3,
       child: Scaffold(
         appBar: AppBar(
-            title: Row(
+            title: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                     "Details",
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500
                     )
@@ -47,46 +47,67 @@ class ExerciseDetails extends StatelessWidget {
         ),
         body: Column(
           children: [
-            ExerciseDetailsHeader(title: exercise.name),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
+              child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(exercise.description),
-                    Container(margin: EdgeInsets.only(top: 20)),
-                    Text(
-                        "Tipps",
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                        )
-                    ),
-                    Text("Bauch anspannen"),
-                    Text("Ellbogen nicht gestreckt"),
-                    Text("Schultern zusammenziehen"),
-                    Expanded(child: Container()),
+                    ExerciseDetailsHeader(title: exercise.name),
                     Container(
-                      alignment: Alignment.center,
-                      child: FilledButton(
-                        onPressed: () {  }, 
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateColor.resolveWith((states) => Color.fromARGB(124, 201, 190, 165)),
-                          foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
-                        ), 
-                        child: Text("Hinzufügen")),
-                    )
+                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(exercise.description),
+                          Container(margin: const EdgeInsets.only(top: 20)),
 
+                          if (exercise.advices.isNotEmpty)
+                            const Text(
+                              "Tipps",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            ...exercise.advices.map((advice) => Text("- ${advice.name}")).toList(),
+                            const SizedBox(height: 20), // Add some spacing between advice and button
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              )
-            )
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 20),
+                child: FilledButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith((states) => const Color.fromARGB(124, 201, 190, 165)),
+                    foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
+                  ),
+                  child: const Text("Hinzufügen"),
+                ),
+              ),
+            ),
           ],
-        )
-
+        ),
       ),
     );
   }
 
 }
+// exercises.map((exercise) {
+// return InkWell(
+// onTap: () {
+// showModalBottomSheet(
+// context: context,
+// isScrollControlled: true,
+// builder: (BuildContext context) {
+// return ExerciseDetails(exercise: exercise);
+// },
+// );
+// },
+// child: ExerciseListItem(exercise: exercise)
+// );
