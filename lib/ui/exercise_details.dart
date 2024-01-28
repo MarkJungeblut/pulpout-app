@@ -1,15 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pulpout/model/exercise.dart';
-import 'package:pulpout/ui/new_training_plan_header.dart';
+import 'package:pulpout/ui/add_to_plan.dart';
 
 import 'exercise_details_header.dart';
+
+typedef ExerciseCallback = void Function(Exercise exercise);
 
 class ExerciseDetails extends StatelessWidget {
 
   final Exercise exercise;
+  final ExerciseCallback exerciseAdded;
 
-  const ExerciseDetails({super.key, required this.exercise});
+  const ExerciseDetails({super.key, required this.exercise, required this.exerciseAdded});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,12 @@ class ExerciseDetails extends StatelessWidget {
             backgroundColor: const Color.fromARGB(
                 124, 201, 190, 165),
             centerTitle: false,
-            leading: const Icon(Icons.close),
+            leading: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () => {
+                Navigator.pop(context)
+              },
+            ),
             actions: [
               Container(
                 margin: const EdgeInsets.only(right: 10),
@@ -53,7 +60,7 @@ class ExerciseDetails extends StatelessWidget {
                   children: [
                     ExerciseDetailsHeader(title: exercise.name),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 00),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -77,20 +84,10 @@ class ExerciseDetails extends StatelessWidget {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: FilledButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateColor.resolveWith((states) => const Color.fromARGB(124, 201, 190, 165)),
-                    foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
-                  ),
-                  child: const Text("Hinzufügen"),
-                ),
-              ),
-            ),
+            AddToPlan(pressed: () {
+              exerciseAdded(exercise);
+              Navigator.pop(context);
+            })
           ],
         ),
       ),

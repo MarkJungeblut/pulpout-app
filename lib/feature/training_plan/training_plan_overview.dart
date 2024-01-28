@@ -43,7 +43,7 @@ class TrainingPlanOverview extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const NewTrainingPlan()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => NewTrainingPlan()));
         },
         child: const Icon(Icons.add),
       ),

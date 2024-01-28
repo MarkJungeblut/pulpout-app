@@ -9,7 +9,9 @@ import '../../data_access/exercises.dart';
 
 class NewTrainingPlan extends StatelessWidget {
 
-  const NewTrainingPlan({super.key});
+  final List<Exercise> exercises = List.empty(growable: true);
+  
+  NewTrainingPlan({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,9 @@ class NewTrainingPlan extends StatelessWidget {
                         itemCount: exerciseGroups.length,
                         itemBuilder: (context, index) {
                           final Iterable<Exercise> exercisesOfGroup = exercises.where((element) => element.exerciseGroup.id == exerciseGroups[index].id);
-                          return ExerciseGroupListItem(exerciseGroup: exerciseGroups[index], exercises: exercisesOfGroup);
+                          return ExerciseGroupListItem(exerciseGroup: exerciseGroups[index], exercises: exercisesOfGroup, exerciseAdded: (Exercise exercise) => {
+                            this.exercises.add(exercise)
+                          });
                         },
                       );
                     },
@@ -63,6 +67,8 @@ class NewTrainingPlan extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: ()  {
+          print("List of exercises ${exercises.length}");
+          Navigator.pop(context);
         },
         child: const Icon(Icons.check),
       ),
