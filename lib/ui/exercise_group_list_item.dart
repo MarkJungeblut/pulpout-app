@@ -10,9 +10,8 @@ class ExerciseGroupListItem extends StatelessWidget {
 
   final ExerciseGroup exerciseGroup;
   final Iterable<Exercise> exercises;
-  final ExerciseCallback exerciseAdded;
 
-  const ExerciseGroupListItem({super.key, required this.exerciseGroup, required this.exercises, required this.exerciseAdded});
+  const ExerciseGroupListItem({super.key, required this.exerciseGroup, required this.exercises});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class ExerciseGroupListItem extends StatelessWidget {
                 context: context,
                 isScrollControlled: true,
                 builder: (BuildContext context) {
-                  return ExerciseDetails(exercise: exercise, exerciseAdded: exerciseAdded);
+                  return ExerciseDetails(exercise: exercise);
                 },
               );
             },

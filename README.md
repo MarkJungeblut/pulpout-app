@@ -26,3 +26,7 @@ See lib/exercise.dart for an example of a file using these annotations.
 See lib/exercise.g.dart for the generated file.
 
 Run ```dart run build_runner build``` to generate files into your source directory.
+
+## State management will be implemented with Riverpod
+
+https://codewithandrea.com/articles/flutter-state-management-riverpod/
