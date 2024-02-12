@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pulpout/ui/exercise_group_list_item.dart';
-import 'package:pulpout/ui/new_training_plan_header.dart';
 import 'package:pulpout/model/exercise.dart';
 import 'package:pulpout/model/exercise_group.dart';
+import 'package:pulpout/model/workout_schedule.dart';
+import 'package:pulpout/ui/exercise_group_list_item.dart';
+import 'package:pulpout/ui/new_training_plan_header.dart';
 
 import '../../data_access/exercise_groups.dart';
 import '../../data_access/exercises.dart';
+import '../../data_access/workout_schedule.dart';
 import '../../state/training_plan_exercise_notifier.dart';
 
 class NewTrainingPlan extends StatelessWidget {
@@ -64,9 +66,19 @@ class NewTrainingPlan extends StatelessWidget {
             ]
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: ()  {
+          onPressed: () async  {
             List<Exercise> exercises = ref.read(trainingPlanExerciseProvider);
             print("List of exercises ${exercises.length}");
+
+            WorkoutSchedule schedule = WorkoutSchedule(0, "", "", "", exercises);
+
+            // TODO: Add error handling
+            try {
+              await postWorkoutSchedule(schedule);
+            } catch (error) {
+              print("Error on inserting workout schedule: $error");
+            }
+
             ref.invalidate(trainingPlanExerciseProvider);
             Navigator.pop(context);
           },
