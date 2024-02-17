@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pulpout/feature/training_plan/training_plan_overview.dart';
 import 'package:pulpout/model/exercise.dart';
 import 'package:pulpout/model/exercise_group.dart';
 import 'package:pulpout/model/workout_schedule.dart';
@@ -80,6 +81,7 @@ class NewTrainingPlan extends StatelessWidget {
             }
 
             ref.invalidate(trainingPlanExerciseProvider);
+            ref.invalidate(reloadWorkoutSchedulesProvider);
             Navigator.pop(context);
           },
           child: const Icon(Icons.check),
