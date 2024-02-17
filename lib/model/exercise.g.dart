@@ -11,9 +11,7 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) => Exercise(
       json['Name'] as String,
       json['Description'] as String,
       ExerciseGroup.fromJson(json['ExerciseGroup'] as Map<String, dynamic>),
-    )..advices = (json['Advices'] as List<dynamic>)
-        .map((e) => Advice.fromJson(e as Map<String, dynamic>))
-        .toList();
+    )..advices = (json['Advices'] as List<dynamic>).map((e) => Advice.fromJson(e as Map<String, dynamic>)).toList();
 
 Map<String, dynamic> _$ExerciseToJson(Exercise instance) => <String, dynamic>{
       'Id': instance.id,

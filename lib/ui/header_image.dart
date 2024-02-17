@@ -5,11 +5,7 @@ class HeaderImage extends StatelessWidget {
   double height = 300;
   BoxFit boxFit;
 
-  HeaderImage(
-      {super.key,
-      required this.image,
-      this.height = 300,
-      this.boxFit = BoxFit.cover});
+  HeaderImage({super.key, required this.image, this.height = 300, this.boxFit = BoxFit.cover});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +13,7 @@ class HeaderImage extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
-          borderRadius:
-              const BorderRadius.vertical(bottom: Radius.circular(30)),
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(30)),
           image: DecorationImage(
             fit: boxFit,
             image: NetworkImage(image),

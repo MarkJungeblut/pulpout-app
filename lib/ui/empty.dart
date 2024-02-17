@@ -6,8 +6,7 @@ class Empty extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const Empty(
-      {super.key, this.offset, required this.title, required this.subtitle});
+  const Empty({super.key, this.offset, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {

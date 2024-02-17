@@ -17,10 +17,8 @@ class AddToPlan extends StatelessWidget {
             pressed();
           },
           style: ButtonStyle(
-            backgroundColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(124, 201, 190, 165)),
-            foregroundColor:
-                MaterialStateColor.resolveWith((states) => Colors.black),
+            backgroundColor: MaterialStateColor.resolveWith((states) => const Color.fromARGB(124, 201, 190, 165)),
+            foregroundColor: MaterialStateColor.resolveWith((states) => Colors.black),
           ),
           child: const Text("Hinzufügen"),
         ),

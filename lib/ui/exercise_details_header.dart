@@ -14,8 +14,7 @@ class ExerciseDetailsHeader extends StatelessWidget {
     return Column(
       children: [
         HeaderImage(
-            image:
-                "https://modusx.de/wp-content/uploads/bankdruecken-langhantel.gif",
+            image: "https://modusx.de/wp-content/uploads/bankdruecken-langhantel.gif",
             boxFit: BoxFit.scaleDown,
             height: 250),
         Container(

@@ -17,15 +17,12 @@ class TitleBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+      Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
       Container(
           padding: const EdgeInsets.only(top: 10),
           child: Row(
             mainAxisSize: MainAxisSize.max,
-            children: titleDetails
-                .map((details) => _buildDetailRow(details))
-                .toList(),
+            children: titleDetails.map((details) => _buildDetailRow(details)).toList(),
           ))
     ]);
   }

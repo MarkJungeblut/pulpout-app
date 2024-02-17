@@ -25,8 +25,7 @@ class ExerciseListItem extends StatelessWidget {
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween, // Add this line
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add this line
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -62,9 +61,7 @@ class ExerciseListItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (ref
-                      .watch(trainingPlanExerciseProvider)
-                      .any((element) => element.id == exercise.id))
+                  if (ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
                     const Icon(Icons.check),
                 ],
               ),

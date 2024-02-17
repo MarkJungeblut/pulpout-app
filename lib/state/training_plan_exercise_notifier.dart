@@ -2,8 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/model/exercise.dart';
 
 final trainingPlanExerciseProvider =
-    NotifierProvider<TrainingPlanExerciseNotifier, List<Exercise>>(
-        TrainingPlanExerciseNotifier.new);
+    NotifierProvider<TrainingPlanExerciseNotifier, List<Exercise>>(TrainingPlanExerciseNotifier.new);
 
 class TrainingPlanExerciseNotifier extends Notifier<List<Exercise>> {
   @override

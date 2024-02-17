@@ -17,10 +17,8 @@ class RemoveFromPlan extends StatelessWidget {
             pressed();
           },
           style: ButtonStyle(
-            backgroundColor: MaterialStateColor.resolveWith(
-                (states) => const Color.fromARGB(124, 201, 190, 165)),
-            foregroundColor:
-                MaterialStateColor.resolveWith((states) => Colors.red),
+            backgroundColor: MaterialStateColor.resolveWith((states) => const Color.fromARGB(124, 201, 190, 165)),
+            foregroundColor: MaterialStateColor.resolveWith((states) => Colors.red),
           ),
           child: const Text("Entfernen"),
         ),

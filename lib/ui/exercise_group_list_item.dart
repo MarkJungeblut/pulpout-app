@@ -10,8 +10,7 @@ class ExerciseGroupListItem extends StatelessWidget {
   final ExerciseGroup exerciseGroup;
   final Iterable<Exercise> exercises;
 
-  const ExerciseGroupListItem(
-      {super.key, required this.exerciseGroup, required this.exercises});
+  const ExerciseGroupListItem({super.key, required this.exerciseGroup, required this.exercises});
 
   @override
   Widget build(BuildContext context) {

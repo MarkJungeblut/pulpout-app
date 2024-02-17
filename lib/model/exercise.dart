@@ -22,8 +22,7 @@ class Exercise {
   @JsonKey(name: 'Advices')
   late List<Advice> advices;
 
-  factory Exercise.fromJson(Map<String, dynamic> json) =>
-      _$ExerciseFromJson(json);
+  factory Exercise.fromJson(Map<String, dynamic> json) => _$ExerciseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExerciseToJson(this);
 

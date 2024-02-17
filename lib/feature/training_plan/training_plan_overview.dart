@@ -22,8 +22,7 @@ class TrainingPlanOverview extends StatelessWidget {
       return Scaffold(
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           HeaderImage(
-              image:
-                  "https://as2.ftcdn.net/v2/jpg/01/74/21/25/1000_F_174212531_cerVf4uP6vinBWieBB46p2P5xVhnsNSK.jpg"),
+              image: "https://as2.ftcdn.net/v2/jpg/01/74/21/25/1000_F_174212531_cerVf4uP6vinBWieBB46p2P5xVhnsNSK.jpg"),
           Container(
               margin: const EdgeInsets.only(top: 10, left: 10),
               child: TitleBar(
@@ -38,8 +37,7 @@ class TrainingPlanOverview extends StatelessWidget {
               child: FutureBuilder<List<WorkoutSchedule>>(
             future: getWorkoutSchedules(),
             key: ref.watch(reloadWorkoutSchedulesProvider),
-            builder: (BuildContext context,
-                AsyncSnapshot<List<WorkoutSchedule>> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<List<WorkoutSchedule>> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const CircularProgressIndicator();
               }
@@ -54,8 +52,7 @@ class TrainingPlanOverview extends StatelessWidget {
                 return const Expanded(
                     child: Empty(
                         title: "Bereit für den ersten Schritt?",
-                        subtitle:
-                            "Füge einen Trainingsplan hinzu um direkt loszulegen.",
+                        subtitle: "Füge einen Trainingsplan hinzu um direkt loszulegen.",
                         offset: Offset(0, -50)));
               } else {
                 return ListView.builder(
@@ -71,8 +68,7 @@ class TrainingPlanOverview extends StatelessWidget {
         ]),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NewTrainingPlan()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => NewTrainingPlan()));
           },
           child: const Icon(Icons.add),
         ),

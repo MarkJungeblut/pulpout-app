@@ -25,9 +25,7 @@ class ExerciseDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("Details",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                  Text("Details", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                 ],
               ),
               backgroundColor: const Color.fromARGB(124, 201, 190, 165),
@@ -54,8 +52,7 @@ class ExerciseDetails extends StatelessWidget {
                     children: [
                       ExerciseDetailsHeader(title: exercise.name),
                       Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 00),
+                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 00),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -70,12 +67,8 @@ class ExerciseDetails extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                            ...exercise.advices
-                                .map((advice) => Text("- ${advice.name}"))
-                                .toList(),
-                            const SizedBox(
-                                height:
-                                    20), // Add some spacing between advice and button
+                            ...exercise.advices.map((advice) => Text("- ${advice.name}")).toList(),
+                            const SizedBox(height: 20), // Add some spacing between advice and button
                           ],
                         ),
                       ),
@@ -83,20 +76,14 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              if (!ref
-                  .watch(trainingPlanExerciseProvider)
-                  .any((element) => element.id == exercise.id))
+              if (!ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
                 AddToPlan(pressed: () {
-                  ref
-                      .watch(trainingPlanExerciseProvider.notifier)
-                      .addExercise(exercise);
+                  ref.watch(trainingPlanExerciseProvider.notifier).addExercise(exercise);
                   Navigator.pop(context);
                 })
               else
                 RemoveFromPlan(pressed: () {
-                  ref
-                      .watch(trainingPlanExerciseProvider.notifier)
-                      .removeExercise(exercise);
+                  ref.watch(trainingPlanExerciseProvider.notifier).removeExercise(exercise);
                   Navigator.pop(context);
                 })
             ],

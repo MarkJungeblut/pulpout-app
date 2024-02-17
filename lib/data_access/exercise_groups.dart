@@ -9,8 +9,7 @@ Future<List<ExerciseGroup>> getExerciseGroups() async {
 
   if (response.statusCode == 200) {
     Iterable exerciseGroups = jsonDecode(response.body);
-    return List<ExerciseGroup>.from(exerciseGroups
-        .map((exerciseGroup) => ExerciseGroup.fromJson(exerciseGroup)));
+    return List<ExerciseGroup>.from(exerciseGroups.map((exerciseGroup) => ExerciseGroup.fromJson(exerciseGroup)));
   }
 
   throw Exception("Failed to load exercise groups");
