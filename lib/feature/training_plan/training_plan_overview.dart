@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pulpout/data_access/workout_schedule.dart';
+import 'package:pulpout/model/workout_schedule.dart';
 import 'package:pulpout/ui/empty.dart';
 import 'package:pulpout/ui/header_image.dart';
 import 'package:pulpout/ui/title_bar.dart';
@@ -8,9 +10,7 @@ import 'new_training_plan.dart';
 
 class TrainingPlanOverview extends StatelessWidget {
 
-  final List listOfPlans = [];
-
-  TrainingPlanOverview({super.key});
+  const TrainingPlanOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +31,49 @@ class TrainingPlanOverview extends StatelessWidget {
                   ],
                 )
             ),
-            if (listOfPlans.isEmpty)
-              const Expanded(
-                  child: Empty(
-                      title: "Bereit für den ersten Schritt?",
-                      subtitle: "Füge einen Trainingsplan hinzu um direkt loszulegen.",
-                      offset: Offset(0, -50)
-                  )
+            Expanded(
+              child: FutureBuilder<List<WorkoutSchedule>>(
+                future: getWorkoutSchedules(),
+                builder: (BuildContext context, AsyncSnapshot<List<WorkoutSchedule>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+
+                  if (snapshot.hasError) {
+                    return Text("Error occurred: ${snapshot.error}");
+                  }
+
+                  final List<WorkoutSchedule> workoutSchedules = snapshot.data!;
+
+                  if (workoutSchedules.isEmpty) {
+                    return const Expanded(
+                        child: Empty(
+                            title: "Bereit für den ersten Schritt?",
+                            subtitle: "Füge einen Trainingsplan hinzu um direkt loszulegen.",
+                            offset: Offset(0, -50)
+                        )
+                    );
+                  } else {
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      itemCount: workoutSchedules.length,
+                      itemBuilder: (context, index) {
+                        return Text(workoutSchedules[index].id.toString());
+                      },
+                    );
+                  }
+                },
               )
-          ]
+            )
+            // if (listOfPlans.isEmpty)
+            //   const Expanded(
+            //       child: Empty(
+            //           title: "Bereit für den ersten Schritt?",
+            //           subtitle: "Füge einen Trainingsplan hinzu um direkt loszulegen.",
+            //           offset: Offset(0, -50)
+            //       )
+            //   )
+        ]
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
