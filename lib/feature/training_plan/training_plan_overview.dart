@@ -62,7 +62,7 @@ class TrainingPlanOverview extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     itemCount: workoutSchedules.length,
                     itemBuilder: (context, index) {
-                      return Text(workoutSchedules[index].id.toString());
+                      return Text("${workoutSchedules[index].name} ${workoutSchedules[index].id.toString()}" );
                     },
                   );
                 }

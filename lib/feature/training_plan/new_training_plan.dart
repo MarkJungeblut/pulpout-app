@@ -13,16 +13,20 @@ import '../../data_access/workout_schedule.dart';
 import '../../state/training_plan_exercise_notifier.dart';
 
 class NewTrainingPlan extends StatelessWidget {
-  const NewTrainingPlan({super.key});
+
+  late String scheduleName;
+
+  NewTrainingPlan({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const NewTrainingPlanHeader(),
+          crossAxisAlignment: CrossAxisAlignment.start, children: [
+            NewTrainingPlanHeader(
+              nameChanged: (name) => scheduleName = name,
+            ),
             Expanded(
               child: FutureBuilder<List<ExerciseGroup>>(
               future: getExerciseGroups(),
@@ -75,7 +79,7 @@ class NewTrainingPlan extends StatelessWidget {
             print("List of exercises ${exercises.length}");
 
             WorkoutSchedule schedule =
-                WorkoutSchedule(0, "", "", "", exercises);
+                WorkoutSchedule(0, scheduleName, "", "", exercises);
 
             // TODO: Add error handling
             try {
@@ -85,6 +89,7 @@ class NewTrainingPlan extends StatelessWidget {
             }
 
             ref.invalidate(trainingPlanExerciseProvider);
+            // TODO: Move to corresponding file
             ref.invalidate(reloadWorkoutSchedulesProvider);
             Navigator.pop(context);
           },

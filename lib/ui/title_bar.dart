@@ -19,28 +19,29 @@ class TitleBar extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
       Container(
-          padding: const EdgeInsets.only(top: 10),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: titleDetails.map((details) => _buildDetailRow(details)).toList(),
-          ))
+        padding: const EdgeInsets.only(top: 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: titleDetails.map((details) => _buildDetailRow(details)).toList(),
+        )
+      )
     ]);
   }
 
   Widget _buildDetailRow(TitleDetails detail) {
     return Expanded(
-        child: Column(
-      children: [
-        Text(
-          detail.title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.w600),
-        ),
-        Container(
-          padding: const EdgeInsets.only(top: 5),
-          child: Text(detail.value, textAlign: TextAlign.center),
-        )
-      ],
+      child: Column(
+        children: [
+          Text(
+            detail.title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 5),
+            child: Text(detail.value, textAlign: TextAlign.center),
+          )
+        ],
     ));
   }
 }
