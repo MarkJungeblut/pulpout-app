@@ -7,7 +7,6 @@ part 'exercise.g.dart';
 
 @JsonSerializable()
 class Exercise {
-
   @JsonKey(name: 'Id')
   late int id;
 
@@ -23,14 +22,10 @@ class Exercise {
   @JsonKey(name: 'Advices')
   late List<Advice> advices;
 
-  factory Exercise.fromJson(Map<String, dynamic> json) => _$ExerciseFromJson(json);
+  factory Exercise.fromJson(Map<String, dynamic> json) =>
+      _$ExerciseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExerciseToJson(this);
 
-  Exercise(
-      this.id,
-      this.name,
-      this.description,
-      this.exerciseGroup
-  );
+  Exercise(this.id, this.name, this.description, this.exerciseGroup);
 }

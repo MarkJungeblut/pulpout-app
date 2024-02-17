@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'exercise.dart';
@@ -22,14 +21,11 @@ class WorkoutSchedule {
   @JsonKey(name: 'Exercises')
   late List<Exercise> exercises;
 
-  factory WorkoutSchedule.fromJson(Map<String, dynamic> json) => _$WorkoutScheduleFromJson(json);
+  factory WorkoutSchedule.fromJson(Map<String, dynamic> json) =>
+      _$WorkoutScheduleFromJson(json);
 
   Map<String, dynamic> toJson() => _$WorkoutScheduleToJson(this);
 
   WorkoutSchedule(
-      this.id,
-      this.name,
-      this.description,
-      this.notes,
-      this.exercises);
+      this.id, this.name, this.description, this.notes, this.exercises);
 }

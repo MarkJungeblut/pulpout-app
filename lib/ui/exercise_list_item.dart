@@ -6,7 +6,6 @@ import 'package:pulpout/state/training_plan_exercise_notifier.dart';
 import '../model/exercise.dart';
 
 class ExerciseListItem extends StatelessWidget {
-
   final Exercise exercise;
 
   const ExerciseListItem({super.key, required this.exercise});
@@ -26,7 +25,8 @@ class ExerciseListItem extends StatelessWidget {
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, // Add this line
+                mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween, // Add this line
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -35,11 +35,13 @@ class ExerciseListItem extends StatelessWidget {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage("https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg"),
+                        image: NetworkImage(
+                            "https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg"),
                       ),
                     ),
                   ),
-                  Expanded( // Wrap the Column with Expanded
+                  Expanded(
+                    // Wrap the Column with Expanded
                     child: Container(
                       margin: const EdgeInsets.only(left: 10, top: 10),
                       child: Column(
@@ -60,14 +62,14 @@ class ExerciseListItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
+                  if (ref
+                      .watch(trainingPlanExerciseProvider)
+                      .any((element) => element.id == exercise.id))
                     const Icon(Icons.check),
                 ],
               ),
-            )
-        );
+            ));
       },
     );
   }
-
 }

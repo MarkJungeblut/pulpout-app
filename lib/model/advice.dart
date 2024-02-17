@@ -17,8 +17,5 @@ class Advice {
 
   Map<String, dynamic> toJson() => _$AdviceToJson(this);
 
-  Advice(
-    this.id,
-    this.name
-  );
+  Advice(this.id, this.name);
 }

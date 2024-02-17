@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/model/exercise.dart';
 
-final trainingPlanExerciseProvider = NotifierProvider<TrainingPlanExerciseNotifier, List<Exercise>>(TrainingPlanExerciseNotifier.new);
+final trainingPlanExerciseProvider =
+    NotifierProvider<TrainingPlanExerciseNotifier, List<Exercise>>(
+        TrainingPlanExerciseNotifier.new);
 
 class TrainingPlanExerciseNotifier extends Notifier<List<Exercise>> {
   @override
@@ -20,8 +22,7 @@ class TrainingPlanExerciseNotifier extends Notifier<List<Exercise>> {
   void removeExercise(Exercise exercise) {
     state = [
       for (final item in state)
-        if (item.id != exercise.id)
-          item
+        if (item.id != exercise.id) item
     ];
 
     ref.notifyListeners();

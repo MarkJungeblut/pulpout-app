@@ -10,14 +10,12 @@ import 'exercise_details_header.dart';
 typedef ExerciseCallback = void Function(Exercise exercise);
 
 class ExerciseDetails extends StatelessWidget {
-
   final Exercise exercise;
 
   const ExerciseDetails({super.key, required this.exercise});
 
   @override
   Widget build(BuildContext context) {
-
     return Consumer(builder: (context, ref, child) {
       return SizedBox(
         height: MediaQuery.of(context).size.height * 2 / 3,
@@ -27,23 +25,16 @@ class ExerciseDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                      "Details",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500
-                      )
-                  ),
+                  Text("Details",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                 ],
               ),
-              backgroundColor: const Color.fromARGB(
-                  124, 201, 190, 165),
+              backgroundColor: const Color.fromARGB(124, 201, 190, 165),
               centerTitle: false,
               leading: IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => {
-                  Navigator.pop(context)
-                },
+                onPressed: () => {Navigator.pop(context)},
               ),
               actions: [
                 Container(
@@ -54,8 +45,7 @@ class ExerciseDetails extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 10),
                   child: const Icon(Icons.more_vert),
                 )
-              ]
-          ),
+              ]),
           body: Column(
             children: [
               Expanded(
@@ -64,7 +54,8 @@ class ExerciseDetails extends StatelessWidget {
                     children: [
                       ExerciseDetailsHeader(title: exercise.name),
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 00),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 00),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
@@ -79,8 +70,12 @@ class ExerciseDetails extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                            ...exercise.advices.map((advice) => Text("- ${advice.name}")).toList(),
-                            const SizedBox(height: 20), // Add some spacing between advice and button
+                            ...exercise.advices
+                                .map((advice) => Text("- ${advice.name}"))
+                                .toList(),
+                            const SizedBox(
+                                height:
+                                    20), // Add some spacing between advice and button
                           ],
                         ),
                       ),
@@ -88,14 +83,20 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              if (!ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
+              if (!ref
+                  .watch(trainingPlanExerciseProvider)
+                  .any((element) => element.id == exercise.id))
                 AddToPlan(pressed: () {
-                  ref.watch(trainingPlanExerciseProvider.notifier).addExercise(exercise);
+                  ref
+                      .watch(trainingPlanExerciseProvider.notifier)
+                      .addExercise(exercise);
                   Navigator.pop(context);
                 })
               else
                 RemoveFromPlan(pressed: () {
-                  ref.watch(trainingPlanExerciseProvider.notifier).removeExercise(exercise);
+                  ref
+                      .watch(trainingPlanExerciseProvider.notifier)
+                      .removeExercise(exercise);
                   Navigator.pop(context);
                 })
             ],

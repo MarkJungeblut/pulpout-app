@@ -13,65 +13,68 @@ import '../../data_access/workout_schedule.dart';
 import '../../state/training_plan_exercise_notifier.dart';
 
 class NewTrainingPlan extends StatelessWidget {
-
   const NewTrainingPlan({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
-        body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const NewTrainingPlanHeader(),
-              Expanded(
-                  child: FutureBuilder<List<ExerciseGroup>>(
-                    future: getExerciseGroups(),
-                    builder: (BuildContext context, AsyncSnapshot<List<ExerciseGroup>> snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
-                      }
+        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const NewTrainingPlanHeader(),
+          Expanded(
+              child: FutureBuilder<List<ExerciseGroup>>(
+            future: getExerciseGroups(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<ExerciseGroup>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              }
 
-                      if (snapshot.hasError) {
-                        return Text("Error occurred: ${snapshot.error}");
-                      }
+              if (snapshot.hasError) {
+                return Text("Error occurred: ${snapshot.error}");
+              }
 
-                      final List<ExerciseGroup> exerciseGroups = snapshot.data!;
+              final List<ExerciseGroup> exerciseGroups = snapshot.data!;
 
-                      return FutureBuilder<List<Exercise>>(
-                        future: getExercises(),
-                        builder: (BuildContext context, AsyncSnapshot<List<Exercise>> snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return const CircularProgressIndicator();
-                          }
+              return FutureBuilder<List<Exercise>>(
+                future: getExercises(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Exercise>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
 
-                          if (snapshot.hasError) {
-                            return Text("Error occurred: ${snapshot.error}");
-                          }
+                  if (snapshot.hasError) {
+                    return Text("Error occurred: ${snapshot.error}");
+                  }
 
-                          final List<Exercise> exercises = snapshot.data!;
+                  final List<Exercise> exercises = snapshot.data!;
 
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: exerciseGroups.length,
-                            itemBuilder: (context, index) {
-                              final Iterable<Exercise> exercisesOfGroup = exercises.where((element) => element.exerciseGroup.id == exerciseGroups[index].id);
-                              return ExerciseGroupListItem(exerciseGroup: exerciseGroups[index], exercises: exercisesOfGroup);
-                            },
-                          );
-                        },
-                      );
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: exerciseGroups.length,
+                    itemBuilder: (context, index) {
+                      final Iterable<Exercise> exercisesOfGroup =
+                          exercises.where((element) =>
+                              element.exerciseGroup.id ==
+                              exerciseGroups[index].id);
+                      return ExerciseGroupListItem(
+                          exerciseGroup: exerciseGroups[index],
+                          exercises: exercisesOfGroup);
                     },
-                  )
-              )
-            ]
-        ),
+                  );
+                },
+              );
+            },
+          ))
+        ]),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async  {
+          onPressed: () async {
             List<Exercise> exercises = ref.read(trainingPlanExerciseProvider);
             print("List of exercises ${exercises.length}");
 
-            WorkoutSchedule schedule = WorkoutSchedule(0, "", "", "", exercises);
+            WorkoutSchedule schedule =
+                WorkoutSchedule(0, "", "", "", exercises);
 
             // TODO: Add error handling
             try {
@@ -88,7 +91,5 @@ class NewTrainingPlan extends StatelessWidget {
         ),
       );
     });
-
-
   }
 }

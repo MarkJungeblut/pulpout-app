@@ -7,11 +7,11 @@ import 'exercise_details.dart';
 import 'exercise_list_item.dart';
 
 class ExerciseGroupListItem extends StatelessWidget {
-
   final ExerciseGroup exerciseGroup;
   final Iterable<Exercise> exercises;
 
-  const ExerciseGroupListItem({super.key, required this.exerciseGroup, required this.exercises});
+  const ExerciseGroupListItem(
+      {super.key, required this.exerciseGroup, required this.exercises});
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,8 @@ class ExerciseGroupListItem extends StatelessWidget {
                 },
               );
             },
-            child: ExerciseListItem(exercise: exercise)
-        );
+            child: ExerciseListItem(exercise: exercise));
       }).toList(),
     );
   }
-
 }

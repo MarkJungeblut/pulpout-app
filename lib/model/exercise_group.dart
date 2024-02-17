@@ -10,12 +10,10 @@ class ExerciseGroup {
   @JsonKey(name: 'Name')
   late String name;
 
-  factory ExerciseGroup.fromJson(Map<String, dynamic> json) => _$ExerciseGroupFromJson(json);
+  factory ExerciseGroup.fromJson(Map<String, dynamic> json) =>
+      _$ExerciseGroupFromJson(json);
 
   Map<String, dynamic> toJson() => _$ExerciseGroupToJson(this);
 
-  ExerciseGroup(
-    this.id,
-    this.name
-  );
+  ExerciseGroup(this.id, this.name);
 }

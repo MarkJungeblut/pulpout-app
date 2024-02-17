@@ -9,7 +9,8 @@ Future<List<Exercise>> getExercises() async {
 
   if (response.statusCode == 200) {
     Iterable exercises = jsonDecode(response.body);
-    return List<Exercise>.from(exercises.map((exercise) => Exercise.fromJson(exercise)));
+    return List<Exercise>.from(
+        exercises.map((exercise) => Exercise.fromJson(exercise)));
   }
 
   throw Exception("Failed to load exercises");

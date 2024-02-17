@@ -11,7 +11,9 @@ class NewTrainingPlanHeader extends StatelessWidget {
     // TODO: implement build
     return Column(
       children: [
-        HeaderImage(image: "https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg"),
+        HeaderImage(
+            image:
+                "https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg"),
         Container(
             margin: const EdgeInsets.only(top: 10, left: 10),
             child: TitleBar(
@@ -21,10 +23,8 @@ class NewTrainingPlanHeader extends StatelessWidget {
                 TitleDetails(title: "MUSKELGRUPPEN", value: "-"),
                 TitleDetails(title: "MUSKELN", value: "-"),
               ],
-            )
-        ),
+            )),
       ],
     );
   }
-
 }
