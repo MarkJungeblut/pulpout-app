@@ -15,7 +15,7 @@ class ExerciseGroupListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      initiallyExpanded: true,
+      initiallyExpanded: false,
       title: Text(exerciseGroup.name),
       children: exercises.map((exercise) {
         return InkWell(
