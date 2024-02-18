@@ -6,6 +6,7 @@ import 'package:pulpout/model/workout_schedule.dart';
 import 'package:pulpout/ui/empty.dart';
 import 'package:pulpout/ui/header_image.dart';
 import 'package:pulpout/ui/title_bar.dart';
+import 'package:pulpout/ui/workout_schedule_item.dart';
 
 import 'new_training_plan.dart';
 
@@ -28,9 +29,9 @@ class TrainingPlanOverview extends StatelessWidget {
             child: TitleBar(
               title: "Trainingspläne",
               titleDetails: [
-                TitleDetails(title: "ÜBUNGEN", value: "-"),
-                TitleDetails(title: "MUSKELGRUPPEN", value: "-"),
-                TitleDetails(title: "MUSKELN", value: "-"),
+                // TitleDetails(title: "ÜBUNGEN", value: "-"),
+                // TitleDetails(title: "MUSKELGRUPPEN", value: "-"),
+                // TitleDetails(title: "MUSKELN", value: "-"),
               ],
             )
           ),
@@ -50,19 +51,18 @@ class TrainingPlanOverview extends StatelessWidget {
                 final List<WorkoutSchedule> workoutSchedules = snapshot.data!;
 
                 if (workoutSchedules.isEmpty) {
-                  return const Expanded(
-                    child: Empty(
+                  return const Empty(
                       title: "Bereit für den ersten Schritt?",
                       subtitle: "Füge einen Trainingsplan hinzu um direkt loszulegen.",
                       offset: Offset(0, -50)
-                    )
                   );
                 } else {
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: workoutSchedules.length,
                     itemBuilder: (context, index) {
-                      return Text("${workoutSchedules[index].name} ${workoutSchedules[index].id.toString()}" );
+                      // return Text("${workoutSchedules[index].name} ${workoutSchedules[index].id.toString()}" );
+                      return WorkoutScheduleItem(workoutSchedule: workoutSchedules[index]);
                     },
                   );
                 }

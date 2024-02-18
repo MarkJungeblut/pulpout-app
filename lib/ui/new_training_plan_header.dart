@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'header_image.dart';
-import 'title_bar.dart';
 
 class NewTrainingPlanHeader extends StatelessWidget {
 
@@ -45,15 +43,6 @@ class NewTrainingPlanHeader extends StatelessWidget {
               );
             },
           )
-          // child: Text("Neuer", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-        //   child: TitleBar(
-        //     title: "Neuer Trainingsplan",
-        //     titleDetails: [
-        //       TitleDetails(title: "ÜBUNGEN", value: "-"),
-        //       TitleDetails(title: "MUSKELGRUPPEN", value: "-"),
-        //       TitleDetails(title: "MUSKELN", value: "-"),
-        //     ],
-        //   )
         ),
       ],
     );
