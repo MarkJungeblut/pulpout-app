@@ -57,13 +57,15 @@ class TrainingPlanOverview extends StatelessWidget {
                       offset: Offset(0, -50)
                   );
                 } else {
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: workoutSchedules.length,
-                    itemBuilder: (context, index) {
-                      // return Text("${workoutSchedules[index].name} ${workoutSchedules[index].id.toString()}" );
-                      return WorkoutScheduleItem(workoutSchedule: workoutSchedules[index]);
-                    },
+                  return Container(
+                    padding: EdgeInsets.only(bottom: 130),
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      itemCount: workoutSchedules.length,
+                      itemBuilder: (context, index) {
+                        return WorkoutScheduleItem(workoutSchedule: workoutSchedules[index]);
+                      },
+                    ),
                   );
                 }
               },
