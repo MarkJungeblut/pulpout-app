@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pulpout/feature/workout_schedule_overview.dart';
+import 'package:pulpout/feature/workout_schedule_overview/workout_schedule_overview.dart';
 
 void main() {
   runApp(const ProviderScope(

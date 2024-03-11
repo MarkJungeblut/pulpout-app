@@ -11,9 +11,9 @@ import '../data_access/exercise_groups.dart';
 import '../data_access/exercises.dart';
 import '../state/workout_schedule_exercise_notifier.dart';
 
-class NewTrainingPlan extends StatelessWidget {
+class NewWorkoutSchedule extends StatelessWidget {
 
-  const NewTrainingPlan({super.key});
+  const NewWorkoutSchedule({super.key});
 
   @override
   Widget build(BuildContext context) {
