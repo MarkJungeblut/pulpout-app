@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/data_access/workout_schedule.dart';
+import 'package:pulpout/feature/workout_schedule_overview/workout_schedule_list_view.dart';
 import 'package:pulpout/ui/workout_schedule_overview/workout_schedule_empty.dart';
 import 'package:pulpout/model/workout_schedule.dart';
 import 'package:pulpout/ui/workout_schedule_overview/workout_schedule_item/workout_schedule_item.dart';
@@ -32,13 +33,7 @@ class WorkoutScheduleFutureBuilder extends ConsumerWidget {
         } else {
           return Container(
             padding: const EdgeInsets.only(bottom: 130),
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: workoutSchedules.length,
-              itemBuilder: (context, index) {
-                return WorkoutScheduleItem(workoutSchedule: workoutSchedules[index]);
-              },
-            ),
+            child: WorkoutScheduleListView(workoutSchedules: workoutSchedules)
           );
         }
       },

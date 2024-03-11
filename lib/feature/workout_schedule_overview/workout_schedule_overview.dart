@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/feature/workout_schedule_overview/workout_schedule_future_builder.dart';
 
 import '../../ui/workout_schedule_overview/workout_schedule_overview_header.dart';
-import '../new_workout_schedule.dart';
+import '../new_workout_schedule/new_workout_schedule.dart';
 
 final reloadWorkoutSchedulesProvider = Provider((ref) => UniqueKey());
 
