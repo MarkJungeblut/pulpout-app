@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/model/exercise.dart';
-import 'package:pulpout/state/training_plan_exercise_notifier.dart';
+import 'package:pulpout/state/workout_schedule_exercise_notifier.dart';
 import 'package:pulpout/ui/add_to_plan.dart';
 import 'package:pulpout/ui/remove_from_plan.dart';
 

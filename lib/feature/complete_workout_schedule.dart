@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/data_access/workout_schedule.dart';
-import 'package:pulpout/feature/training_plan/training_plan_overview.dart';
+import 'package:pulpout/feature/workout_schedule_overview.dart';
 import 'package:pulpout/model/workout_schedule.dart';
-import 'package:pulpout/state/training_plan_exercise_notifier.dart';
+import 'package:pulpout/state/workout_schedule_exercise_notifier.dart';
 
-import '../../ui/header_image.dart';
+import '../ui/header_image.dart';
 
 class CompleteWorkoutSchedule extends StatelessWidget {
   final isTitleSetProvider = StateProvider<bool>((ref) => false);
@@ -78,7 +78,7 @@ class CompleteWorkoutSchedule extends StatelessWidget {
             // TODO: Move to corresponding file
             ref.invalidate(reloadWorkoutSchedulesProvider);
 
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const TrainingPlanOverview()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutScheduleOverview()));
           },
           child: const Icon(Icons.check),
         ),

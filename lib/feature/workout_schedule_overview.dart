@@ -6,14 +6,15 @@ import 'package:pulpout/model/workout_schedule.dart';
 import 'package:pulpout/ui/empty.dart';
 import 'package:pulpout/ui/header_image.dart';
 import 'package:pulpout/ui/title_bar.dart';
-import 'package:pulpout/ui/workout_schedule_item.dart';
+import 'package:pulpout/ui/workout_schedule_overview/workout_schedule_item.dart';
 
-import 'new_training_plan.dart';
+import '../ui/workout_schedule_overview/workout_schedule_overview_header.dart';
+import 'new_workout_schedule.dart';
 
 final reloadWorkoutSchedulesProvider = Provider((ref) => UniqueKey());
 
-class TrainingPlanOverview extends StatelessWidget {
-  const TrainingPlanOverview({super.key});
+class WorkoutScheduleOverview extends StatelessWidget {
+  const WorkoutScheduleOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +23,7 @@ class TrainingPlanOverview extends StatelessWidget {
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          HeaderImage(
-            image: "https://as2.ftcdn.net/v2/jpg/01/74/21/25/1000_F_174212531_cerVf4uP6vinBWieBB46p2P5xVhnsNSK.jpg"),
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 10),
-            child: TitleBar(
-              title: "Trainingspläne",
-              titleDetails: [
-                // TitleDetails(title: "ÜBUNGEN", value: "-"),
-                // TitleDetails(title: "MUSKELGRUPPEN", value: "-"),
-                // TitleDetails(title: "MUSKELN", value: "-"),
-              ],
-            )
-          ),
+          const WorkoutScheduleOverviewHeader(),
           Expanded(
             child: FutureBuilder<List<WorkoutSchedule>>(
               future: getWorkoutSchedules(),

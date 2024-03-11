@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pulpout/feature/training_plan/complete_workout_schedule.dart';
-import 'package:pulpout/feature/training_plan/training_plan_overview.dart';
+import 'package:pulpout/feature/complete_workout_schedule.dart';
 import 'package:pulpout/model/exercise.dart';
 import 'package:pulpout/model/exercise_group.dart';
 import 'package:pulpout/model/workout_schedule.dart';
-import 'package:pulpout/ui/exercise_group_list_item.dart';
+import 'package:pulpout/ui/exercise_overview/exercise_group_list_item.dart';
 import 'package:pulpout/ui/header_image.dart';
-import 'package:pulpout/ui/new_training_plan_header.dart';
 
-import '../../data_access/exercise_groups.dart';
-import '../../data_access/exercises.dart';
-import '../../data_access/workout_schedule.dart';
-import '../../state/training_plan_exercise_notifier.dart';
+import '../data_access/exercise_groups.dart';
+import '../data_access/exercises.dart';
+import '../state/workout_schedule_exercise_notifier.dart';
 
 class NewTrainingPlan extends StatelessWidget {
 
@@ -26,9 +23,6 @@ class NewTrainingPlan extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start, children: [
             HeaderImage(
               image: "https://as2.ftcdn.net/v2/jpg/01/79/81/77/1000_F_179817756_QzTocli57q9G6a1Oe7kJtoMS5dNMU8cl.jpg"),
-            // NewTrainingPlanHeader(
-            //   nameChanged: (name) => scheduleName = name,
-            // ),
             Expanded(
               child: FutureBuilder<List<ExerciseGroup>>(
               future: getExerciseGroups(),

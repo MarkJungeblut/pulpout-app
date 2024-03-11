@@ -2,9 +2,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pulpout/model/exercise.dart';
 
 final trainingPlanExerciseProvider =
-    NotifierProvider<TrainingPlanExerciseNotifier, List<Exercise>>(TrainingPlanExerciseNotifier.new);
+    NotifierProvider<WorkoutScheduleExerciseNotifier, List<Exercise>>(WorkoutScheduleExerciseNotifier.new);
 
-class TrainingPlanExerciseNotifier extends Notifier<List<Exercise>> {
+class WorkoutScheduleExerciseNotifier extends Notifier<List<Exercise>> {
   @override
   List<Exercise> build() {
     return List.empty(growable: true);

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pulpout/model/exercise_group.dart';
 
-import '../model/exercise.dart';
-import 'exercise_details.dart';
+import '../../model/exercise.dart';
+import '../exercise_details/exercise_details.dart';
 import 'exercise_list_item.dart';
 
 class ExerciseGroupListItem extends StatelessWidget {

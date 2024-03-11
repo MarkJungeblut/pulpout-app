@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import 'header_image.dart';
-import 'title_bar.dart';
+import '../header_image.dart';
+import '../title_bar.dart';
 
 class ExerciseDetailsHeader extends StatelessWidget {
   final String title;
