@@ -12,8 +12,6 @@ class WorkoutScheduleOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
     return Consumer(builder: (context, ref, child) {
       return Scaffold(
         body: const Column(

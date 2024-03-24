@@ -46,7 +46,6 @@ class CompleteWorkoutSchedule extends StatelessWidget {
             }
 
             ref.invalidate(selectedExerciseProvider);
-            // TODO: Move to corresponding file
             ref.invalidate(reloadWorkoutSchedulesProvider);
 
             Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkoutScheduleOverview()));
