@@ -61,7 +61,7 @@ class ExerciseListItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
+                  if (ref.watch(selectedExerciseProvider).any((element) => element.id == exercise.id))
                     const Icon(Icons.check),
                 ],
               ),

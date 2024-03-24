@@ -76,14 +76,14 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              if (!ref.watch(trainingPlanExerciseProvider).any((element) => element.id == exercise.id))
+              if (!ref.watch(selectedExerciseProvider).any((element) => element.id == exercise.id))
                 AddToPlan(pressed: () {
-                  ref.watch(trainingPlanExerciseProvider.notifier).addExercise(exercise);
+                  ref.watch(selectedExerciseProvider.notifier).addExercise(exercise);
                   Navigator.pop(context);
                 })
               else
                 RemoveFromPlan(pressed: () {
-                  ref.watch(trainingPlanExerciseProvider.notifier).removeExercise(exercise);
+                  ref.watch(selectedExerciseProvider.notifier).removeExercise(exercise);
                   Navigator.pop(context);
                 })
             ],

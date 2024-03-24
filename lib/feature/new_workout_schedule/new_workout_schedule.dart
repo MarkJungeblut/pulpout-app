@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pulpout/feature/complete_workout_schedule.dart';
+import 'package:pulpout/feature/complete_workout_schedule/complete_workout_schedule.dart';
 import 'package:pulpout/feature/new_workout_schedule/exercise_group_future_builder.dart';
 import 'package:pulpout/model/exercise.dart';
 import 'package:pulpout/model/workout_schedule.dart';
@@ -25,8 +25,8 @@ class NewWorkoutSchedule extends ConsumerWidget {
         ]
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ref.watch(trainingPlanExerciseProvider).isEmpty ? null : () async {
-          List<Exercise> exercises = ref.read(trainingPlanExerciseProvider);
+        onPressed: ref.watch(selectedExerciseProvider).isEmpty ? null : () async {
+          List<Exercise> exercises = ref.read(selectedExerciseProvider);
           print("List of exercises ${exercises.length}");
 
           WorkoutSchedule workoutSchedule =
@@ -34,7 +34,7 @@ class NewWorkoutSchedule extends ConsumerWidget {
 
           Navigator.push(context, MaterialPageRoute(builder: (context) => CompleteWorkoutSchedule(workoutSchedule: workoutSchedule)));
         },
-        foregroundColor: ref.watch(trainingPlanExerciseProvider).isEmpty ? Colors.grey : null,
+        foregroundColor: ref.watch(selectedExerciseProvider).isEmpty ? Colors.grey : null,
         child: const Icon(Icons.arrow_forward),
       ),
     );
